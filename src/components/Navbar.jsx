@@ -12,9 +12,9 @@ export const Navbar = () => {
 					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
 				</Link>
 				<div className="ml-auto">
-					<button className="btn btn-outline-secondary"><i class="fa-solid fa-user"></i>{" "}{store.usuario}</button>
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
+					<button className="btn btn-outline-secondary"><i className="fa-solid fa-user"></i>{" "}{store.usuario}</button>
+					<Link to="/add">
+						<button className="btn btn-primary">Add New Character</button>
 					</Link>
 				</div>
 			</div>

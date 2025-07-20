@@ -11,7 +11,7 @@ export const getPersonajes = async (dispatch) => {
 		dispatch({type: 'set_personajes', payload: data})
 }
 
-export const crearPersonaje = async (dispatch, newPersonaje, setNewPersonaje) => {
+export const crearPersonaje = async (dispatch, newPersonaje, navigate) => {
 		const response = await fetch("https://verbose-computing-machine-g747pp45rjx3vvp4-8000.app.github.dev/usuarios/monkey/personajes", {
 			method: "POST",
 			body: JSON.stringify(newPersonaje),
@@ -22,10 +22,23 @@ export const crearPersonaje = async (dispatch, newPersonaje, setNewPersonaje) =>
 		const data = await response.json()
 		console.log(data);
 		getPersonajes(dispatch)
-		setNewPersonaje({
-			nombre: "",
-			frase: "",
-			imagen: ""
+		navigate("/")
+
+	}
+
+export const editPersonaje = async (dispatch,id, newPersonaje, navigate) => {
+		const response = await fetch(`https://verbose-computing-machine-g747pp45rjx3vvp4-8000.app.github.dev/usuarios/monkey/personajes/${id}`, {
+			method: "PUT",
+			body: JSON.stringify(newPersonaje),
+			headers: {
+				"Content-Type": "application/json"
+			}
 		})
+		const data = await response.json()
+		console.log(data);
+		if (response.ok) {
+			navigate("/")
+		}
+		
 
 	}
